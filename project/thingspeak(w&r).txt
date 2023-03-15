@@ -1,0 +1,50 @@
+import random
+import urllib.request
+import threading
+import requests
+
+def thingspeak_write():
+    val = "Gopi"
+    val2 = 100
+    URL='https://api.thingspeak.com/update?api_key='
+    KEY='V063BTV76TYE1I3V'
+    HEADER='&field1={}&field2={}'.format(val,val2)
+    new_URL=URL+KEY+HEADER
+    print(new_URL)
+    v = urllib.request.urlopen(new_URL)
+    print(v)
+
+#thingspeak_write()
+
+def thingspeak_read():
+
+    URL='https://api.thingspeak.com/channels/2064495/fields/1.json?api key='
+    URL2='https://api.thingspeak.com/channels/2064495/fields/2.json?api key='
+    KEY='XWIXMVEOS6M3HPRT'
+    HEADER='&results=1'
+    nUrl = URL+KEY+HEADER
+    nUrl2 = URL2+KEY+HEADER
+    #print(new_URL)
+    
+    getd = requests.get(nUrl).json()
+    getd2 = requests.get(nUrl2).json()
+    #print("getd:",getd)
+    ch_id = getd['channel']['id']
+    ch_id2 = getd2['channel']['id']
+    f = getd['feeds']
+    f2 = getd2['feeds']
+    n = []
+    ent = []
+    a= []
+    for x in f:
+        #print(x,end='\n\n')
+        n.append(x['field1'])
+        ent.append(x['entry_id'])
+    for x in f2:
+        a.append(x['field2'])
+        ent.append(x['entry_id'])
+    if ent[0] == ent[1]:
+        print(n[0])
+    print(a[0])
+
+thingspeak_read()

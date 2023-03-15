@@ -1,0 +1,29 @@
+import pandas as pd
+import os
+import json
+
+'''
+na = str(input("Enter name: "))
+no = int(input("Enter number: "))
+a = {"name": na ,"Rollno":no}
+print(a)
+b = json.dumps(a)
+'''
+
+def write_json(file):
+    with open("sample2.json", "w") as outfile:
+        outfile.write(file)
+
+
+def read_json(file):
+    print(file)
+    try:
+        with open(file,"r") as f:
+            fl = json.load(f)
+        return f1
+    except:
+        pass
+    
+#write_json(b)
+file = str(input("Enter file name:"))
+print(read_json(file))
