@@ -1,12 +1,12 @@
 Instruction for run as a Service/Start-up in raspberry pi
 ------------------------------------------------------------
 step-1
-try this in terminal, in root directory:-
+-try this in terminal, in root directory:-
 sudo nano /etc/systemd/system/program.service
 -------------------------------------------------------
 step-2
-After opened a new file using nano editor 
-try this:
+-After opened a new file using nano editor 
+-try this:
 [Unit]
 Description= My Program #Any description about your program or service or project as you wish
 After=network.target #this shows the target runs after what
@@ -22,11 +22,13 @@ User=admin #user name according to raspberry pi
 
 [Install]
 WantedBy=multi-user.target
+
+-for saving the nano file in terminal press ctrl+O then y and then ctrl+X
 --------------------------------------------------------------
 step-3
 -after creating the service file 
 -run set of commands in terminal
-and they are:-
+-and they are:-
 sudo systemctl enable program.service # to enable the service
 sudo systemctl start program.service  # to start the service 
 sudo systemctl status program.service # to check the status of the service
