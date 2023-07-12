@@ -1,0 +1,39 @@
+Instruction for run as a Service/Start-up in raspberry pi
+------------------------------------------------------------
+step-1
+try this in terminal, in root directory:-
+sudo nano /etc/systemd/system/program.service
+-------------------------------------------------------
+step-2
+After opened a new file using nano editor 
+try this:
+[Unit]
+Description= My Program #Any description about your program or service or project as you wish
+After=network.target #this shows the target runs after what
+
+[Service]
+ExecStart=/usr/bin/python3 /home/admin/Documents/script.py #location of python location of python file
+WorkingDirectory=/home/admin/Documents #location of the directory of the file
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=admin #user name according to raspberry pi
+
+
+[Install]
+WantedBy=multi-user.target
+--------------------------------------------------------------
+step-3
+-after creating the service file 
+-run set of commands in terminal
+and they are:-
+sudo systemctl enable program.service # to enable the service
+sudo systemctl start program.service  # to start the service 
+sudo systemctl status program.service # to check the status of the service
+
+-once the service status is activated by checking via this link ->"sudo systemctl status program.service
+"
+-----------------------------------------------------------------
+step-4
+-reboot the raspberry PI
+sudo reboot
