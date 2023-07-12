@@ -31,8 +31,7 @@ sudo systemctl enable program.service # to enable the service
 sudo systemctl start program.service  # to start the service 
 sudo systemctl status program.service # to check the status of the service
 
--once the service status is activated by checking via this link ->"sudo systemctl status program.service
-"
+-once the service status is activated by checking via this link-> "sudo systemctl status program.service"
 -----------------------------------------------------------------
 step-4
 -reboot the raspberry PI
